@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мої проєкти | DevPortfolio</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        nav a {
+            padding: 12px 20px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 9px;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            background: #555;
+            transform: translateY(-2px);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .project-card {
+            width: 320px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h2 {
+            font-size: 23px;
+            margin: 0 0 12px;
+        }
+
+        .project-card p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: #666;
+            overflow-wrap: anywhere;
+        }
+
+        .project-date {
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+            font-size: 13px !important;
+        }
+
+        .details-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 11px 20px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: .3s;
+        }
+
+        .details-button:hover {
+            background: #555;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="{% url 'home' %}">Головна</a>
+        <a href="{% url 'project' %}">Проєкти</a>
+        <a href="{% url 'skill' %}">Навички</a>
+        <a href="{% url 'expirience' %}">Досвід</a>
+        <a href="{% url 'pricing' %}">Прайсинг</a>
+        <a href="{% url 'about' %}">Про мене</a>
+    </nav>
+
+    <h1>Мої проєкти</h1>
+
+    <div class="projects-container">
+
+        {% for project in projects %}
+
+            <div class="project-card">
+
+                {% if project.picure %}
+                    <img src="{{ project.picure.url }}" alt="{{ project.name }}">
+                {% endif %}
+
+                <h2>{{ project.name }}</h2>
+
+                <p>{{ project.description }}</p>
+
+                <p>
+                    <strong>Технології:</strong>
+                    {{ project.tech }}
+                </p>
+
+                <p class="project-date">
+                    Дата створення: {{ project.date|date:"d.m.Y" }}
+                </p>
+
+                <a href="{% url 'project_detail' project.id %}" class="details-button">
+                    Детальніше
+                </a>
+
+            </div>
+
+        {% empty %}
+
+            <p class="empty-message">
+                Поки що проєктів немає.
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прайсинг — DevPortfolio</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        nav a {
+            padding: 12px 20px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 9px;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            background: #555;
+            transform: translateY(-2px);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 12px;
+            font-size: 34px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .pricing-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .pricing-card {
+            width: 320px;
+            padding: 28px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+        }
+
+        .pricing-card h2 {
+            font-size: 24px;
+            margin-top: 0;
+        }
+
+        .price {
+            font-size: 34px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 15px;
+            color: #888;
+            font-weight: normal;
+        }
+
+        .pricing-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .features {
+            padding: 0;
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+
+        .features li::before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .pricing-button {
+            display: block;
+            text-align: center;
+            padding: 13px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 9px;
+            transition: background 0.3s;
+        }
+
+        .pricing-button:hover {
+            background: #555;
+        }
+
+        .popular {
+            border: 2px solid #555;
+        }
+
+        .popular-label {
+            position: absolute;
+            top: -14px;
+            right: 20px;
+            background: #333;
+            color: white;
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        .calculator {
+            max-width: 650px;
+            margin: 55px auto 0;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+
+        .calculator h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .calculator label {
+            display: block;
+            margin: 20px 0 8px;
+            font-weight: bold;
+        }
+
+        select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .calculate-button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: #333;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .calculate-button:hover {
+            background: #555;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            .pricing-card {
+                width: 100%;
+                max-width: 380px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="{% url 'home' %}">Головна</a>
+        <a href="{% url 'project' %}">Проєкти</a>
+        <a href="{% url 'skill' %}">Навички</a>
+        <a href="{% url 'expirience' %}">Досвід</a>
+        <a href="{% url 'pricing' %}">Прайсинг</a>
+        <a href="{% url 'about' %}">Про мене</a>
+    </nav>
+
+    <h1>Мої послуги та ціни</h1>
+
+    <p class="subtitle">
+        Оберіть пакет послуг, який найкраще підходить
+        для вашого майбутнього проєкту.
+    </p>
+
+    <div class="pricing-container">
+
+        <div class="pricing-card">
+            <h2>Basic</h2>
+
+            <p>Для простих вебсайтів та невеликих проєктів.</p>
+
+            <div class="price">500 грн</div>
+
+            <ul class="features">
+                <li>Односторінковий сайт</li>
+                <li>HTML та CSS</li>
+                <li>Адаптивний дизайн</li>
+                <li>Базова структура</li>
+            </ul>
+
+            <a href="#calculator" class="pricing-button">
+                Обрати тариф
+            </a>
+        </div>
+
+        <div class="pricing-card popular">
+            <div class="popular-label">Популярний</div>
+
+            <h2>Standard</h2>
+
+            <p>Для багатосторінкових сайтів.</p>
+
+            <div class="price">1000 грн</div>
+
+            <ul class="features">
+                <li>До 5 сторінок</li>
+                <li>HTML, CSS, JavaScript</li>
+                <li>Адаптивний дизайн</li>
+                <li>Інтерактивні елементи</li>
+            </ul>
+
+            <a href="#calculator" class="pricing-button">
+                Обрати тариф
+            </a>
+        </div>
+
+        <div class="pricing-card">
+            <h2>Premium</h2>
+
+            <p>Для складніших вебпроєктів.</p>
+
+            <div class="price">2000 грн</div>
+
+            <ul class="features">
+                <li>Повноцінний вебсайт</li>
+                <li>Python та Django</li>
+                <li>Підключення бази даних</li>
+                <li>Функціонал користувачів</li>
+            </ul>
+
+            <a href="#calculator" class="pricing-button">
+                Обрати тариф
+            </a>
+        </div>
+
+    </div>
+
+    <div class="calculator" id="calculator">
+
+        <h2>Калькулятор вартості</h2>
+
+        <p class="subtitle">
+            Виберіть тип проєкту та додаткові послуги,
+            щоб розрахувати приблизну вартість.
+        </p>
+
+        <label for="plan">Пакет послуг:</label>
+
+        <select id="plan">
+            <option value="500">Basic — 500 грн</option>
+            <option value="1000">Standard — 1000 грн</option>
+            <option value="2000">Premium — 2000 грн</option>
+        </select>
+
+        <label for="extra">Додаткові послуги:</label>
+
+        <select id="extra">
+            <option value="0">Без додаткових послуг</option>
+            <option value="200">Додаткова сторінка — 200 грн</option>
+            <option value="400">Анімації — 400 грн</option>
+            <option value="500">База даних — 500 грн</option>
+        </select>
+
+        <button class="calculate-button" onclick="calculatePrice()">
+            Розрахувати вартість
+        </button>
+
+        <div class="result" id="result">
+            Вартість: 500 грн
+        </div>
+
+    </div>
+
+    <script>
+        function calculatePrice() {
+            const plan = Number(
+                document.getElementById("plan").value
+            );
+
+            const extra = Number(
+                document.getElementById("extra").value
+            );
+
+            const total = plan + extra;
+
+            document.getElementById("result").textContent =
+                "Вартість: " + total + " грн";
+        }
+    </script>
+
+</body>
+</html>

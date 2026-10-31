@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Досвід | DevPortfolio</title>
+<style>
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    padding: 30px 20px;
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    color: #333;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+nav a, .back {
+    padding: 12px 20px;
+    background: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 9px;
+}
+nav a:hover, .back:hover { background: #555; }
+h1 { text-align: center; margin-bottom: 15px; }
+.subtitle { text-align: center; color: #777; margin-bottom: 35px; }
+.container { max-width: 850px; margin: auto; }
+.experience-card {
+    background: white;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+    transition: .3s;
+}
+.experience-card:hover { transform: translateY(-4px); }
+.experience-card h2 { margin-top: 0; }
+.company { color: #777; font-weight: bold; }
+.description { color: #666; line-height: 1.7; }
+.date { color: #999; font-size: 14px; }
+.back {
+    display: block;
+    width: fit-content;
+    margin: 35px auto;
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="{% url 'home' %}">Головна</a>
+    <a href="{% url 'project' %}">Проєкти</a>
+    <a href="{% url 'skill' %}">Навички</a>
+    <a href="{% url 'expirience' %}">Досвід</a>
+    <a href="{% url 'pricing' %}">Прайсинг</a>
+    <a href="{% url 'about' %}">Про мене</a>
+</nav>
+
+<h1>Мій досвід</h1>
+<p class="subtitle">Навчання, практика та розвиток у програмуванні</p>
+
+<div class="container">
+
+    {% for item in expiriences %}
+    <div class="experience-card">
+        <h2>{{ item.position }}</h2>
+        <p class="company">{{ item.company }}</p>
+        <p class="description">{{ item.description }}</p>
+        <p class="date">{{ item.period }}</p>
+    </div>
+    {% empty %}
+    <div class="experience-card">
+        <h2>Мій шлях у програмуванні</h2>
+        <p class="description">
+            Тут поки немає записів про досвід.
+        </p>
+    </div>
+    {% endfor %}
+
+</div>
+
+<a href="{% url 'home' %}" class="back">На головну</a>
+
+</body>
+</html>

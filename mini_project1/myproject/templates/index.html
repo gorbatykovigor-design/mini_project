@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevPortfolio | Головна</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        header {
+            background: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #777;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #444;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #888;
+        }
+
+        .hero {
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 50px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: #777;
+        }
+
+        .hero-text p {
+            color: #666;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            border-radius: 10px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #555;
+            transform: translateY(-3px);
+        }
+
+        .btn-light {
+            background: white;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+
+        .btn-light:hover {
+            background: #e8e8e8;
+        }
+
+        .hero-card {
+            width: 300px;
+            min-width: 260px;
+            padding: 35px;
+            background: white;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+        }
+
+        .avatar {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 20px;
+            background: #e5e5e5;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 45px;
+        }
+
+        .hero-card h2 {
+            margin-bottom: 10px;
+        }
+
+        .hero-card p {
+            color: #777;
+            line-height: 1.5;
+        }
+
+        .section {
+            max-width: 1100px;
+            margin: 0 auto 70px;
+            padding: 0 25px;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 30px;
+        }
+
+        .links-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .link-card {
+            width: 240px;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .link-card h3 {
+            margin-bottom: 12px;
+        }
+
+        .link-card p {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+
+        .link-card a {
+            color: #333;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .link-card a:hover {
+            color: #888;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            color: #777;
+        }
+
+        @media (max-width: 750px) {
+            header {
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                margin: 35px auto;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Dev<span>Portfolio</span></div>
+
+        <nav>
+            <a href="{% url 'home' %}">Головна</a>
+            <a href="{% url 'project' %}">Проєкти</a>
+            <a href="{% url 'pricing' %}">Ціни</a>
+            <a href="{% url 'skill' %}">Навички</a>
+            <a href="{% url 'expirience' %}">Досвід</a>
+            <a href="{% url 'about' %}">Про мене</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+
+        <div class="hero-text">
+            <h1>Привіт! Я <span>Web Developer</span></h1>
+
+            <p>
+                Ласкаво просимо до мого портфоліо!
+                Я займаюся веброзробкою, створюю сайти,
+                вебзастосунки та Telegram-боти.
+                Тут ти можеш переглянути мої роботи,
+                навички та дізнатися більше про мене.
+            </p>
+
+            <div class="buttons">
+                <a href="{% url 'project' %}" class="btn">
+                    Мої проєкти
+                </a>
+
+                <a href="{% url 'pricing' %}" class="btn btn-light">
+                    Мої послуги
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <div class="avatar">💻</div>
+            <h2>Денис</h2>
+            <p>Junior Web Developer</p>
+            <p>Python | Django | FastAPI</p>
+        </div>
+
+    </section>
+
+    <section class="section" id="links">
+
+        <h2>Досліджуй моє портфоліо</h2>
+
+        <div class="links-container">
+
+            <div class="link-card">
+                <h3>Мої проєкти</h3>
+                <p>Переглянь мої роботи та розробки.</p>
+                <a href="{% url 'project' %}">Переглянути →</a>
+            </div>
+
+            <div class="link-card">
+                <h3>Навички</h3>
+                <p>Мови програмування та технології.</p>
+                <a href="{% url 'skill' %}">Переглянути →</a>
+            </div>
+
+            <div class="link-card">
+                <h3>Досвід</h3>
+                <p>Мій досвід навчання та розробки.</p>
+                <a href="{% url 'expirience' %}">Переглянути →</a>
+            </div>
+
+            <div class="link-card">
+                <h3>Прайсинг</h3>
+                <p>Пакети послуг та калькулятор вартості.</p>
+                <a href="{% url 'pricing' %}">Переглянути →</a>
+            </div>
+
+            <div class="link-card">
+                <h3>Про мене</h3>
+                <p>Дізнайся більше про мене та моє навчання.</p>
+                <a href="{% url 'about' %}">Переглянути →</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        © 2026 DevPortfolio | Створено Денисом
+    </footer>
+
+</body>
+</html>

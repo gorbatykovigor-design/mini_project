@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Про мене | DevPortfolio</title>
+<style>
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    padding: 30px 20px;
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    color: #333;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 35px;
+}
+nav a, .back {
+    padding: 12px 20px;
+    background: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 9px;
+}
+nav a:hover, .back:hover { background: #555; }
+.container {
+    max-width: 850px;
+    margin: auto;
+    padding: 40px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.1);
+}
+h1 { text-align: center; margin-bottom: 30px; }
+h2 { margin-top: 30px; }
+p { color: #666; line-height: 1.8; }
+.back {
+    display: block;
+    width: fit-content;
+    margin: 30px auto 0;
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="{% url 'home' %}">Головна</a>
+    <a href="{% url 'project' %}">Проєкти</a>
+    <a href="{% url 'skill' %}">Навички</a>
+    <a href="{% url 'expirience' %}">Досвід</a>
+    <a href="{% url 'pricing' %}">Прайсинг</a>
+    <a href="{% url 'about' %}">Про мене</a>
+</nav>
+
+<div class="container">
+    <h1>Про мене</h1>
+
+    <h2>Привіт! Мене звати Денис</h2>
+
+    <p>
+        Я початківець Web Developer, який цікавиться
+        програмуванням та створенням вебсайтів.
+        Мені подобається розробляти корисні вебзастосунки,
+        працювати з кодом та знаходити рішення різних задач.
+    </p>
+
+    <h2>Чим я займаюся?</h2>
+
+    <p>
+        Я вивчаю Python, Django, FastAPI, HTML, CSS
+        та JavaScript. Створюю власні навчальні проєкти,
+        вебсайти та Telegram-боти.
+    </p>
+
+    <h2>Моя мета</h2>
+
+    <p>
+        Постійно вдосконалювати свої навички,
+        вивчати нові технології та розвиватися
+        у сфері веброзробки.
+    </p>
+
+    <a href="{% url 'home' %}" class="back">На головну</a>
+</div>
+
+</body>
+</html>
